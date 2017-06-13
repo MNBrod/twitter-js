@@ -15,6 +15,10 @@ router.get('/users/:name', function(req, res) {
   res.render( 'index', { tweets: list } );
 });
 
+router.get('/tweets/:id', (req, res) => {
+  var tweet = tweetBank.find(req.params.id);
+  res.render( 'index', {tweets: tweet});
+})
 router.use(express.static('public'))
 
 
