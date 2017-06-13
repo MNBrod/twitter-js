@@ -14,7 +14,7 @@
     {% for tweet in tweets %}
     <!--li class='tweet'>{{tweet.content}}</li-->
     <div class='tweet'>
-      <img src='http://cdn2-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-8.jpg' class='tweetImg'>
+      <img src='{{tweet.image}}' class='tweetImg'>
       </img>
       <div class='tweetText'>
         <a href="/users/{{tweet.name}}">{{tweet.name}}<br></a>
@@ -37,5 +37,5 @@
 
   </div>
 </div>
-
+<!--http://cdn2-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-8.jpg-->
 {% endblock %}
