@@ -2,27 +2,18 @@ const _ = require('lodash');
 
 var tweets = [];
 var num = 0;
+var tnum = 0;
 var pics = [
   'http://cdn2-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-8.jpg',
-
   'http://cdn1-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-2.jpg',
-
   'http://cdn3-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-5.jpg',
-
   'https://www.cesarsway.com/sites/newcesarsway/files/styles/large_article_preview/public/The-stages-of-puppy-growth.jpg?itok=9ptPJwY8',
-
   'https://i.ytimg.com/vi/mRf3-JkwqfU/hqdefault.jpg',
-
   'https://assets.merriam-webster.com/mw/images/article/art-wap-article-main/puppy-3143-7cfb4d6a42dfc7d9d1ae7e23126279e8@1x.jpg',
-
   'http://ghk.h-cdn.co/assets/16/09/980x490/landscape-1457107485-gettyimages-512366437.jpg',
-
   'http://cdn.skim.gs/image/upload/v1456344012/msi/Puppy_2_kbhb4a.jpg',
-
   'http://www.pawderosa.com/images/puppies.jpg',
-
   'http://dakotapethospital.com/clients/14546/images/pile_of_puppies.jpg',
-
   'https://blogs-images.forbes.com/kristintablang/files/2016/02/Uber-Puppies.jpg'
 ]
 
@@ -31,14 +22,19 @@ function add(name, content) {
   var img;
   var exists = false;
   for (var i = 0; i < tweets.length; i++) {
-    if (tweets[i].name == name ) {
+    if (tweets[i].name == name) {
       exists = true;
       img = tweets[i].image;
     }
   }
   if (!exists) {
-  var n = Math.floor(Math.random() * pics.length);
-  img = pics[n];
+    if (tnum < pics.length) {
+      img = pics[tnum];
+      tnum++;
+    } else {
+      var n = Math.floor(Math.random() * pics.length);
+      img = pics[n];
+    }
   }
   return tweets.push({ name: name, content: content, id: num, image: img });
 }
