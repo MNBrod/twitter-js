@@ -8,12 +8,15 @@ router.get('/', function (req, res) {
   res.render( 'index', { tweets: tweets } );
 });
 
-router.use(express.static('public'))
-/*
-router.get('/stylesheets/style.css', (req, res) => {
-  res.sendFile('/Users/max/Fullstack/twitter-js/public/stylesheets/style.css');
+router.get('/users/:name', function(req, res) {
+  var name = req.params.name;
+  var list = tweetBank.find( {name: name} );
+  console.log(list);
+  res.render( 'index', { tweets: list } );
 });
-*/
+
+router.use(express.static('public'))
+
 
 module.exports = router;
 
