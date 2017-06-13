@@ -8,8 +8,12 @@ const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
+/**
+ * Middleware
+ */
 app.use((req, res, next) => {
-  console.log(res.status(400));
+  console.log('Request Type:', req.method)
+  console.log('Request URL:', req.originalUrl)
   next();
 })
 app.get('/', (req, res) => {
