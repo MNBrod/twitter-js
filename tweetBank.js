@@ -3,7 +3,8 @@ const _ = require('lodash');
 var tweets = [];
 var num = 0;
 var tnum = 0;
-var pics = [
+//url's for puppy profile pictures
+var p = [
   'http://cdn2-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-8.jpg',
   'http://cdn1-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-2.jpg',
   'http://cdn3-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-5.jpg',
@@ -16,6 +17,8 @@ var pics = [
   'http://dakotapethospital.com/clients/14546/images/pile_of_puppies.jpg',
   'https://blogs-images.forbes.com/kristintablang/files/2016/02/Uber-Puppies.jpg'
 ]
+//shuffle the array, for reasons!
+var pics = shuffle(p);
 
 function add(name, content) {
   num++;
@@ -70,3 +73,13 @@ for (let i = 0; i < 10; i++) {
 }
 module.exports.add('David Yoon', 'test');
 module.exports.add('David Yoon', 'test2');
+
+
+//shuffle function
+function shuffle(a) {
+    for (let i = a.length; i; i--) {
+        let j = Math.floor(Math.random() * i);
+        [a[i - 1], a[j]] = [a[j], a[i - 1]];
+    }
+    return a;
+}
