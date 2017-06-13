@@ -4,8 +4,8 @@ var tweets = [];
 var num = 0;
 
 function add (name, content) {
-  tweets.push({ name: name, content: content, id: num.toString() });
   num++;
+  tweets.push({ name: name, content: content, id: num });
 }
 
 function list () {
